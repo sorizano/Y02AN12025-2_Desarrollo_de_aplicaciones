@@ -4,3 +4,4 @@ IC 2025-2
 
 Sesión 1: https://ses1-da-20252.streamlit.app/
 Sesión 2: https://ses2-da-20252.streamlit.app/ 
+Sesión 3: https://ses3-da-20252.streamlit.app/
