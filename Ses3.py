@@ -18,7 +18,7 @@ if opcion == "Inicio":
     st.title("Bienvenid@ a la aplicación") 
 
 # Sección: Clasificación de Puntajes
-elif opcion == "Clasificación de Puntajes"
+elif opcion == "Clasificación de Puntajes":
     st.title("Clasificación de Puntajes")
     st.write("Ingese un puntaje y el sistema lo clasificará.")
 
