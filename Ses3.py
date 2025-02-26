@@ -22,7 +22,7 @@ if opcion == "Inicio":
     puntaje_slider = st.slider("Seleccione un puntaje:", 0, 100, 50)
 
     # Mostrar la clasificación en tiempo real
-    st.info(f"El puntaje {puntaje_slider} es clasificado como: **{clasificar_puntaje(puntaje_slider)}")
+    st.info(f"El puntaje {puntaje_slider} es clasificado como: **{clasificar_puntaje(puntaje_slider)}**")
 
 # Sección: Clasificación de Puntajes
 elif opcion == "Clasificación de Puntajes":
