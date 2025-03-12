@@ -5,7 +5,6 @@ import os
 #configurar supabase
 SUPABASE_URL = "https://ondncxfrkzerxndpzvjz.supabase.co"
 SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9uZG5jeGZya3plcnhuZHB6dmp6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDE3NDU3NzksImV4cCI6MjA1NzMyMTc3OX0.i-CknD56TkjtSzTW8gp4Ulr0VldY28nL1J-FBHG8uyc"
-
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 st.title("Gestión de Clientes - CRUD con Supabase y Streamlit")
@@ -25,16 +24,21 @@ if st.button("Agregar Cliente"):
         st.warning("Nombre y Email son obligatorios")
 
 st.header("Clientes Registrados")
-
 #obtener a los clientes
 clientes = supabase.table("clientes").select("*").execute()
-
-
 if clientes.data:
     for cliente in clientes.data:
         st.subheader(cliente["nombre"])
         st.write(f"📧 {cliente['email']}")
         st.write(f"📞 {cliente['telefono']}")
         st.write(f"📅 Fecha Registro: {cliente['fecha_registro']}")
+
+    #Botón para eliminar cliente
+    if st.button(f"Eliminar {cliente['nombre']}", key=cliente["id"]):
+        supabase.table("clientes").delete().eq("id". cliente["id"]).execute()
+        st.success(f"{cliente ['nombre']} eliminado correctamente")
+        st.experimental_rerun()
+
+
 else:
     st.info("No hay clientes registrados aún")
