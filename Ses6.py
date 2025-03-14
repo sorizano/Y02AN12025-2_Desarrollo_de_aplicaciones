@@ -37,7 +37,7 @@ if clientes.data:
             if st.button(f"Eliminar {cliente['nombre']}", key=cliente["id"]):
                 supabase.table("clientes").delete().eq("id", cliente["id"]).execute()
                 st.success(f"{cliente['nombre']} eliminado correctamente")
-                st.experimental_rerun()
+                st.rerun()
         
 else:
     st.info("No hay clientes registrados aún")
