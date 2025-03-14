@@ -28,8 +28,8 @@ st.header("Clientes Registrados")
 #obtener a los clientes
 clientes = supabase.table("clientes").select("*").execute()
 
-if clientes.data:
-    for cliente in clientes.data:
+if clientes.data: #verifica si hay clientes en la base de datos
+    for cliente in clientes.data: #Recorre cada cliente en la base de datos
         with st.expander (cliente["nombre"]):
             st.write(f"📧 {cliente['email']}")
             st.write(f"📞 {cliente['telefono']}")
