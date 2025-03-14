@@ -1,6 +1,5 @@
 import streamlit as st
 from supabase import create_client, Client
-import os
 
 #configurar supabase
 SUPABASE_URL = "https://ondncxfrkzerxndpzvjz.supabase.co"
@@ -15,6 +14,7 @@ nombre = st.text_input("Nombre")
 email = st.text_input("Email")
 telefono = st.text_input("Teléfono")
 
+#Insertar el cliente en la base de datos
 if st.button("Agregar Cliente"):
     if nombre and email:
         data = {"nombre": nombre, "email": email, "telefono":telefono}
@@ -23,9 +23,11 @@ if st.button("Agregar Cliente"):
     else:
         st.warning("Nombre y Email son obligatorios")
 
+#Mostrar los cliente registrados
 st.header("Clientes Registrados")
 #obtener a los clientes
 clientes = supabase.table("clientes").select("*").execute()
+
 if clientes.data:
     for cliente in clientes.data:
         with st.expander (cliente["nombre"]):
